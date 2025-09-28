@@ -489,35 +489,31 @@
                            </div>
                         </form>
                         <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbyvCe26cjMqDp1_i-k3hj-q63AXL8NpBPGy7KBtmMh7NXVWRSa5M38aANzsqDcN3UwYww/exec";
+    const form = document.getElementById("contact-form");
+    form.addEventListener("submit", e => {
+      e.preventDefault();
 
-document.getElementById("contact-form").addEventListener("submit", e => {
-  e.preventDefault();
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => data[key] = value);
 
-  const formData = {
-    name: e.target.name.value,
-    email: e.target.email.value,
-    number: e.target.number.value,
-    date: e.target.data.value,
-    message: e.target.message.value
-  };
-
-  fetch(scriptURL, {
-    method: "POST",
-    body: JSON.stringify(formData),
-    headers: { "Content-Type": "application/json" }
-  })
-  .then(res => res.json())
-  .then(data => {
-    alert("✅ Thanks! Your message was sent.");
-    e.target.reset();
-  })
-  .catch(err => {
-    console.error("Error!", err);
-    alert("❌ Something went wrong. Try again later.");
-  });
-});
-</script>
+      fetch("https://script.google.com/macros/s/AKfycbx995GGt01YXuB-qx_a1Hp-HcWfI0-gFuTKx-mC77HjVwGD9Kr_a4D7X5GvKSFFKB3kQA/exec", {
+        method: "POST",
+        mode: "no-cors", 
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        document.getElementById("response").textContent = "Form submitted successfully!";
+        form.reset();
+      })
+      .catch(() => {
+        document.getElementById("response").textContent = "Error submitting form.";
+      });
+    });
+  </script>
 
                      </div>
                   </div>
