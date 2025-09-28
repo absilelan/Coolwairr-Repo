@@ -469,6 +469,8 @@
                                     </select>
                                  </div>
                               </div>-->
+
+                              <h1>here</h1>
                               <div class="col-lg-12">
                                  <div class="contact__from-input">
                                     <textarea name="message" placeholder="Your Message"></textarea>
@@ -488,22 +490,60 @@
                               </div>
                            </div>
                         </form>
-                        <script>
-    const form = document.getElementById("contact-form");
-    form.addEventListener("submit", e => {
-      e.preventDefault();
 
-      const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => data[key] = value);
+<!-- <script>
 
-      fetch("https://script.google.com/macros/s/AKfycby0_E9OhDBVlUKKdczqnP7cd98D6nOqTAC4TWW69ksOWqUxgQUC_R9aN-gYCFsoAqksXQ/exec", {
+         const data1 = {
+            "name":"test",
+            "email":"test",
+            "number":"9898989898",
+            "date":"test",
+            "message":"test"
+         };
+
+
+            fetch("https://script.google.com/macros/s/AKfycby0_E9OhDBVlUKKdczqnP7cd98D6nOqTAC4TWW69ksOWqUxgQUC_R9aN-gYCFsoAqksXQ/exec", {
   method: "POST",
   mode: "no-cors", 
   headers: {
     "Content-Type": "application/json"
   },
-  body: JSON.stringify(data)
+  body: JSON.stringify(data1)
+})
+      .then(resp => {
+       // document.getElementById("response").textContent = "Form submitted successfully!";
+        form.reset();
+              console.log(resp);
+
+      })
+      .catch(() => {
+                       console.log("in catch");
+
+      //  document.getElementById("response").textContent = "Error submitting form.";
+      });
+    
+
+</script> -->
+
+                        <script>
+    const form = document.getElementById("contact-form");
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      console.log("here");
+
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => {
+         data[key] = value;
+         console.log(key+" / "+value);
+      });
+
+      console.log(data);
+
+      fetch("https://script.google.com/macros/s/AKfycby0_E9OhDBVlUKKdczqnP7cd98D6nOqTAC4TWW69ksOWqUxgQUC_R9aN-gYCFsoAqksXQ/exec", {
+  method: "POST",
+  mode: "no-cors", 
+  body: new URLSearchParams(data) // encodes like form data
 })
       .then(() => {
         document.getElementById("response").textContent = "Form submitted successfully!";
