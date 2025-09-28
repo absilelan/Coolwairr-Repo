@@ -489,7 +489,7 @@
                            </div>
                         </form>
                         <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycby9ZdzjhsaBpGTdKEvyyYuAcMOnfgslICDruiyoInwb0PXm7bQHln7T8DCRx3hnCMk-LQ/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbyvCe26cjMqDp1_i-k3hj-q63AXL8NpBPGy7KBtmMh7NXVWRSa5M38aANzsqDcN3UwYww/exec";
 
 document.getElementById("contact-form").addEventListener("submit", e => {
   e.preventDefault();
@@ -508,10 +508,17 @@ document.getElementById("contact-form").addEventListener("submit", e => {
     headers: { "Content-Type": "application/json" }
   })
   .then(res => res.json())
-  .then(data => alert("Thanks! Your message was sent."))
-  .catch(err => console.error("Error!", err));
+  .then(data => {
+    alert("✅ Thanks! Your message was sent.");
+    e.target.reset();
+  })
+  .catch(err => {
+    console.error("Error!", err);
+    alert("❌ Something went wrong. Try again later.");
+  });
 });
 </script>
+
                      </div>
                   </div>
                </div>
