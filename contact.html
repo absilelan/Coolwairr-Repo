@@ -423,26 +423,26 @@
                   </div>
                   <div class="col-xxl-6 col-xl-6">
                      <div class="contact-from">
-                        <form action="#">
+                        <form id="contact-form">
                            <div class="row">
                               <div class="col-lg-6">
                                  <div class="contact__from-input">
-                                    <input type="text" placeholder="Full Name*">
+                                    <input type="text" name="name" placeholder="Full Name*">
                                  </div>
                               </div>
                               <div class="col-lg-6">
                                  <div class="contact__from-input">
-                                    <input type="text" placeholder="Email Address*">
+                                    <input type="text" name="email" placeholder="Email Address*">
                                  </div>
                               </div>
                               <div class="col-lg-6">
                                  <div class="contact__from-input">
-                                    <input type="tel" placeholder="Phone Number">
+                                    <input type="tel" name="number" placeholder="Phone Number">
                                  </div>
                               </div>
                               <div class="col-lg-6">
                                  <div class="contact__from-input">
-                                    <input type="date">
+                                    <input type="date" name="date">
                                  </div>
                               </div>
                               <!--<div class="col-lg-6">
@@ -471,7 +471,7 @@
                               </div>-->
                               <div class="col-lg-12">
                                  <div class="contact__from-input">
-                                    <textarea name="Message" placeholder="Your Message"></textarea>
+                                    <textarea name="message" placeholder="Your Message"></textarea>
                                  </div>
                               </div>
                               <div class="col-12">
@@ -488,6 +488,30 @@
                               </div>
                            </div>
                         </form>
+                        <script>
+const scriptURL = "https://script.google.com/macros/s/AKfycby9ZdzjhsaBpGTdKEvyyYuAcMOnfgslICDruiyoInwb0PXm7bQHln7T8DCRx3hnCMk-LQ/exec";
+
+document.getElementById("contact-form").addEventListener("submit", e => {
+  e.preventDefault();
+
+  const formData = {
+    name: e.target.name.value,
+    email: e.target.email.value,
+    number: e.target.number.value,
+    date: e.target.data.value,
+    message: e.target.message.value
+  };
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: JSON.stringify(formData),
+    headers: { "Content-Type": "application/json" }
+  })
+  .then(res => res.json())
+  .then(data => alert("Thanks! Your message was sent."))
+  .catch(err => console.error("Error!", err));
+});
+</script>
                      </div>
                   </div>
                </div>
