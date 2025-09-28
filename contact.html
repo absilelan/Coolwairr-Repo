@@ -423,7 +423,7 @@
                   </div>
                   <div class="col-xxl-6 col-xl-6">
                      <div class="contact-from">
-                        <form id="contact-form">
+                        <form id="contact-form-to-sheet">
                            <div class="row">
                               <div class="col-lg-6">
                                  <div class="contact__from-input">
@@ -440,11 +440,11 @@
                                     <input type="tel" name="number" placeholder="Phone Number">
                                  </div>
                               </div>
-                              <div class="col-lg-6">
+                              <!-- <div class="col-lg-6">
                                  <div class="contact__from-input">
                                     <input type="date" name="date">
                                  </div>
-                              </div>
+                              </div> -->
                               <!--<div class="col-lg-6">
                                  <div class="contact__select mb-20">
                                     <select>
@@ -470,7 +470,6 @@
                                  </div>
                               </div>-->
 
-                              <h1>here</h1>
                               <div class="col-lg-12">
                                  <div class="contact__from-input">
                                     <textarea name="message" placeholder="Your Message"></textarea>
@@ -490,71 +489,23 @@
                               </div>
                            </div>
                         </form>
+<script>
+      const scriptURL =                       
+      "https://script.google.com/macros/s/AKfycbxbpkwyerYWlNKyFj3s93NwAibKbUM9ZIpLseG0tNclISzVq7sFp5Dm7m8pQdZqxAUT5w/exec";
+      const form = document.forms["contact-form-to-sheet"];
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        var formData = new FormData(form);
 
-<!-- <script>
-
-         const data1 = {
-            "name":"test",
-            "email":"test",
-            "number":"9898989898",
-            "date":"test",
-            "message":"test"
-         };
-
-
-            fetch("https://script.google.com/macros/s/AKfycby0_E9OhDBVlUKKdczqnP7cd98D6nOqTAC4TWW69ksOWqUxgQUC_R9aN-gYCFsoAqksXQ/exec", {
-  method: "POST",
-  mode: "no-cors", 
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(data1)
-})
-      .then(resp => {
-       // document.getElementById("response").textContent = "Form submitted successfully!";
-        form.reset();
-              console.log(resp);
-
-      })
-      .catch(() => {
-                       console.log("in catch");
-
-      //  document.getElementById("response").textContent = "Error submitting form.";
+        fetch(scriptURL, { method: "POST", body: formData })
+          .then((response) => {
+            alert("Done", "Submitted Successfully.", "success");
+          })
+          .catch((error) => {
+            alert("Error", "Something went wrong. please try again!", "error");
+          });
       });
-    
-
-</script> -->
-
-                        <script>
-    const form = document.getElementById("contact-form");
-    form.addEventListener("submit", e => {
-      e.preventDefault();
-      console.log("here");
-
-      const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => {
-         data[key] = value;
-         console.log(key+" / "+value);
-      });
-
-      console.log(data);
-
-      fetch("https://script.google.com/macros/s/AKfycby0_E9OhDBVlUKKdczqnP7cd98D6nOqTAC4TWW69ksOWqUxgQUC_R9aN-gYCFsoAqksXQ/exec", {
-  method: "POST",
-  mode: "no-cors", 
-  body: new URLSearchParams(data) // encodes like form data
-})
-      .then(() => {
-        document.getElementById("response").textContent = "Form submitted successfully!";
-        form.reset();
-      })
-      .catch(() => {
-        document.getElementById("response").textContent = "Error submitting form.";
-      });
-    });
-  </script>
-
+    </script>
                      </div>
                   </div>
                </div>
