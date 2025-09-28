@@ -11746,7 +11746,7 @@ p.checkout-coupon input[type=text]:focus {
 .contact-map iframe {
   height: 585px;
   width: 100%;
-  mix-blend-mode: luminosity;
+  /*mix-blend-mode: luminosity;*/
 }
 
 .contact-from {
@@ -13478,6 +13478,15 @@ p.checkout-coupon input[type=text]:focus {
   align-items: center;
   justify-content: space-between;
   background: #e0e0e0;   /* grey background */
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.offer-banner-silver {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #C0C0C0;   /* silver background */
   padding: 30px;
   border-radius: 10px;
 }
