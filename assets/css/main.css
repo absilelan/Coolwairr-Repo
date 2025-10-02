@@ -681,7 +681,7 @@ i[class^=flaticon-] {
   font-size: 16px;
   font-weight: var(--bd-fw-medium);
   color: var(--clr-common-white);
-  background: var(--clr-theme-secondary);
+  background: var(--clr-text-secondary);
   height: 60px;
   display: -webkit-box;
   display: -moz-box;
