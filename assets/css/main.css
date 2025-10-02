@@ -13491,6 +13491,17 @@ p.checkout-coupon input[type=text]:focus {
   border-radius: 10px;
 }
 
+.offer-banner img {
+  max-width: 100%;   /* image never wider than its container */
+  height: auto;      /* keeps aspect ratio */
+  display: block;    /* removes inline gap */
+}
+
+.offer-banner-silverimg {
+  max-width: 100%;   /* image never wider than its container */
+  height: auto;      /* keeps aspect ratio */
+  display: block;    /* removes inline gap */
+}
 
 .offer-text {
   flex: 1;
@@ -13528,8 +13539,10 @@ p.checkout-coupon input[type=text]:focus {
 }
 
 .offer-image img {
-  max-width: 250px;   /* image size control yahan se */
-  height: auto;
+  /*max-width: 250px;   image size control yahan se */
+  max-width: 100%;   /* image never wider than parent box */
+  height: auto;      /* keeps aspect ratio */
+  display: block;    /* removes inline spacing issue */
 }
 .about-container {
   display: flex;
