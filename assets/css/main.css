@@ -4148,6 +4148,9 @@ PAGINATION CSS START
 
 .banner-4 {
   background: linear-gradient(90.19deg, rgb(230, 247, 252) 0%, rgb(245, 254, 255) 100%);
+  /*overflow: visible !important;
+  margin-bottom: 0;
+  padding-bottom: 100px;  keep as you already have or adjust */
 }
 
 .banner-item-4 {
@@ -12076,6 +12079,14 @@ p.checkout-coupon input[type=text]:focus {
   margin: 0;
   font-size: 14px;
 }
+
+/* Give breathing room to the next section */
+.furniture-off {
+  margin-top: 80px; /* increase or decrease as needed */
+  position: relative;
+  z-index: 2;
+}
+
 .furniture-off__item {
   padding: 70px 40px;
 }
@@ -13480,6 +13491,7 @@ p.checkout-coupon input[type=text]:focus {
   background: #e0e0e0;   /* grey background */
   padding: 30px;
   border-radius: 10px;
+  gap: 20px;
 }
 
 .offer-banner-silver {
@@ -13489,6 +13501,7 @@ p.checkout-coupon input[type=text]:focus {
   background: #C0C0C0;   /* silver background */
   padding: 30px;
   border-radius: 10px;
+  gap: 20px;
 }
 
 .offer-banner img {
@@ -13505,6 +13518,23 @@ p.checkout-coupon input[type=text]:focus {
 
 .offer-text {
   flex: 1;
+}
+
+/* 🧠 Mobile view: Stack image on top of text */
+@media (max-width: 768px) {
+  .offer-banner, .offer-banner-silver {
+    flex-direction: column; /* Stack vertically */
+    text-align: center;     /* Optional for centering text */
+  }
+
+  .offer-image {
+    order: -1; /* Move image to top */
+    width: 100%;
+  }
+
+  .offer-text {
+    width: 100%;
+  }
 }
 
 .offer-small {
@@ -13534,7 +13564,7 @@ p.checkout-coupon input[type=text]:focus {
 }
 
 .offer-image {
-  flex: 1;
+  flex: 0 0 40%;
   text-align: right;
 }
 
